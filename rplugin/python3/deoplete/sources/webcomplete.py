@@ -5,6 +5,8 @@ complete words from your Chrome instance in your editor.'''
 from os.path import dirname, abspath, join, pardir
 from subprocess import run, PIPE
 from .base import Base
+import xmlrpc.client
+
 import deoplete.util
 
 
@@ -20,11 +22,9 @@ class Source(Base):
         self.rank = 4
         filedir = dirname(abspath(__file__))
         projectdir = abspath(join(filedir, pardir, pardir, pardir, pardir))
-        self.__script = join(projectdir, 'sh', 'webcomplete')
+        self.__server = xmlrpc.client.ServerProxy('http://localhost:8888')
 
     def gather_candidates(self, context):
-        context['is_async'] = True
-
         if not self._is_same_context(context['input']):
             self.__last_input = context['input']
             self.__cache = None
@@ -32,8 +32,8 @@ class Source(Base):
         if self.__cache is not None:
             return self.__cache
 
-        output = run(self.__script.split(), shell=True, stdout=PIPE).stdout
-        candidates = output.decode('utf-8').splitlines()
+        output = self.__server.get_words()[0]
+        candidates = output.splitlines()
         self.__cache = [{'word': word} for word in candidates]
 
         return self.__cache
