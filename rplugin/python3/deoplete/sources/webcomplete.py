@@ -32,7 +32,7 @@ class Source(Base):
         if self.__cache is not None:
             return self.__cache
 
-        output = self.__server.get_words()[0]
+        output = self.__server.get_words()
         candidates = output.splitlines()
         self.__cache = [{'word': word} for word in candidates]
 
