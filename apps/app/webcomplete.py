@@ -45,4 +45,4 @@ with SimpleXMLRPCServer(('localhost', 8888),
     server_thread = threading.Thread(target=server.serve_forever)
     server_thread.start()
     while True:
-        receivedMessage = getMessage()
+        receivedMessage = getMessage()[0]
