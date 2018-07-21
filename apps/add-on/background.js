@@ -1,5 +1,5 @@
 console.log("Webcomplete addons starting..");
-var port = browser.runtime.connectNative("ping_pong");
+var port = browser.runtime.connectNative("webcomplete");
 console.log(port);
 
 /*
