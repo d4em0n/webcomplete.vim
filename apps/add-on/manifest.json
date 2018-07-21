@@ -3,7 +3,7 @@
   "description": "Web addons for communicate to webcomplete neovim plugin",
   "manifest_version": 2,
   "name": "Webcomplete addons",
-  "version": "1.0",
+  "version": "0.1",
   "applications": {
     "gecko": {
       "id": "webcomplete@example.org",
