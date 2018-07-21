@@ -1,7 +1,7 @@
 {
-  "name": "ping_pong",
+  "name": "webcomplete",
   "description": "Example host for native messaging",
-  "path": "/path/to/native-messaging/app/ping_pong.py",
+  "path": "/path/to/native-messaging/app/webcomplete.py",
   "type": "stdio",
-  "allowed_extensions": [ "ping_pong@example.org" ]
+  "allowed_extensions": [ "webcomplete@example.org" ]
 }
